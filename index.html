@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Andi Pratama — CV Online</title>
+    <style>
+      /* Reset & base — flat, no gradient, no AI vibes */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #f2f4f8; /* flat abu muda */
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        line-height: 1.5;
+        color: #1e2b3c;
+        padding: 2rem 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+      }
+
+      /* Card utama — bersih, bayangan tipis */
+      .cv-card {
+        max-width: 960px;
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 18px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+        border: 1px solid #e6eaf0;
+      }
+
+      /* Header — flat biru tua */
+      .cv-header {
+        background-color: #1e3a5f; /* flat navy */
+        padding: 2.5rem 2.5rem 2rem 2.5rem;
+        color: white;
+      }
+
+      .cv-header h1 {
+        font-size: 2.8rem;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+        line-height: 1.2;
+        margin-bottom: 0.35rem;
+      }
+
+      .cv-header .title {
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: #cfddee;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Kontak — flat, ikon teks sederhana */
+      .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.25rem 2rem;
+        font-size: 0.95rem;
+        color: #e0e9f2;
+        border-top: 1px solid #2f4a6b;
+        padding-top: 1.25rem;
+      }
+
+      .contact-info span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .contact-info i {
+        font-style: normal;
+        font-weight: 500;
+        opacity: 0.8;
+      }
+
+      /* Layout dua kolom */
+      .cv-body {
+        display: grid;
+        grid-template-columns: 1fr 2.2fr;
+        gap: 0;
+      }
+
+      /* Sidebar kiri — flat, sedikit abu */
+      .sidebar {
+        background-color: #f9fbfd;
+        padding: 2rem 1.8rem 2.5rem 1.8rem;
+        border-right: 1px solid #e2e8f0;
+      }
+
+      .main-content {
+        padding: 2rem 2.5rem 2.5rem 2.5rem;
+        background-color: #ffffff;
+      }
+
+      /* Section umum */
+      .section {
+        margin-bottom: 2rem;
+      }
+
+      .section-title {
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #1e3a5f;
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #d0dbe8;
+      }
+
+      /* Sidebar — skill, bahasa, dll */
+      .skill-item {
+        margin-bottom: 1.2rem;
+      }
+
+      .skill-name {
+        display: block;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #1e2b3c;
+        margin-bottom: 0.3rem;
+      }
+
+      .skill-bar-bg {
+        background-color: #d9e1ec;
+        height: 6px;
+        border-radius: 0;
+        width: 100%;
+      }
+
+      .skill-bar-fill {
+        background-color: #2b5a8c; /* flat */
+        height: 6px;
+        width: 0%;
+      }
+
+      /* persentase bar manual, flat tanpa gradient */
+      .fill-90 {
+        width: 90%;
+      }
+      .fill-85 {
+        width: 85%;
+      }
+      .fill-80 {
+        width: 80%;
+      }
+      .fill-75 {
+        width: 75%;
+      }
+      .fill-70 {
+        width: 70%;
+      }
+
+      .lang-item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
+        color: #2c3e50;
+      }
+
+      .lang-level {
+        color: #4f6f8f;
+        font-weight: 500;
+      }
+
+      .education-item {
+        margin-bottom: 1.5rem;
+      }
+
+      .edu-degree {
+        font-weight: 700;
+        font-size: 1rem;
+        color: #1e2b3c;
+      }
+
+      .edu-school {
+        font-size: 0.9rem;
+        color: #3f5a77;
+        margin: 0.2rem 0 0.3rem;
+      }
+
+      .edu-year {
+        font-size: 0.8rem;
+        color: #6b7f94;
+        letter-spacing: 0.2px;
+      }
+
+      /* Main content — pengalaman & profil */
+      .profile-text {
+        font-size: 1rem;
+        color: #2b3e53;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+
+      .experience-item {
+        margin-bottom: 1.8rem;
+      }
+
+      .exp-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 0.3rem;
+      }
+
+      .exp-title {
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: #1e2b3c;
+      }
+
+      .exp-company {
+        font-weight: 500;
+        color: #2b5a8c;
+        font-size: 0.95rem;
+      }
+
+      .exp-date {
+        font-size: 0.8rem;
+        color: #6b7f94;
+        background-color: #f0f4fa;
+        padding: 0.2rem 0.6rem;
+        border-radius: 20px;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .exp-desc {
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        color: #33485f;
+        padding-left: 0.2rem;
+        list-style-type: none;
+      }
+
+      .exp-desc li {
+        margin-bottom: 0.45rem;
+        position: relative;
+        padding-left: 1.2rem;
+      }
+
+      .exp-desc li::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: #2b5a8c;
+        font-weight: 500;
+      }
+
+      /* sertifikasi / penghargaan */
+      .cert-item {
+        margin-bottom: 0.9rem;
+        font-size: 0.95rem;
+        color: #2b3e53;
+      }
+
+      .cert-item strong {
+        font-weight: 600;
+        color: #1e2b3c;
+      }
+
+      /* tombol kontak — flat, tanpa gradien */
+      .button-flat {
+        display: inline-block;
+        background-color: #1e3a5f;
+        color: white;
+        font-weight: 500;
+        font-size: 0.9rem;
+        padding: 0.7rem 1.6rem;
+        border: none;
+        border-radius: 30px;
+        text-decoration: none;
+        letter-spacing: 0.3px;
+        transition: background-color 0.15s ease;
+        margin-top: 0.5rem;
+      }
+
+      .button-flat:hover {
+        background-color: #14304d;
+      }
+
+      /* footer kecil */
+      .cv-footer {
+        background-color: #f9fbfd;
+        border-top: 1px solid #e2e8f0;
+        padding: 1.2rem 2.5rem;
+        font-size: 0.8rem;
+        color: #6b7f94;
+        text-align: center;
+        letter-spacing: 0.2px;
+      }
+
+      /* responsif */
+      @media (max-width: 700px) {
+        body {
+          padding: 1rem;
+        }
+
+        .cv-header {
+          padding: 1.8rem 1.5rem;
+        }
+
+        .cv-header h1 {
+          font-size: 2rem;
+        }
+
+        .cv-body {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          border-right: none;
+          border-bottom: 1px solid #e2e8f0;
+          padding: 1.8rem 1.5rem;
+        }
+
+        .main-content {
+          padding: 1.8rem 1.5rem;
+        }
+
+        .contact-info {
+          gap: 0.8rem 1.2rem;
+          font-size: 0.85rem;
+        }
+
+        .exp-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.3rem;
+        }
+
+        .exp-date {
+          align-self: flex-start;
+        }
+      }
+
+      /* no gradient anywhere, no AI-ish glow */
+      .no-select {
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cv-card">
+      <!-- Header: flat, tanpa hiasan berlebihan -->
+      <header class="cv-header">
+        <h1>Zulfiqri</h1>
+        <div class="title">Web Developer & UI Designer</div>
+        <div class="contact-info">
+          <span>
+            <i>✉</i>
+            andi.pratama@email.com
+          </span>
+          <span>
+            <i>📞</i>
+            +62 812 3456 7890
+          </span>
+          <span>
+            <i>📍</i>
+            Jakarta, Indonesia
+          </span>
+          <span>
+            <i>🔗</i>
+            linkedin.com/in/andipratama
+          </span>
+        </div>
+      </header>
+
+      <!-- Body dua kolom -->
+      <div class="cv-body">
+        <!-- Sidebar kiri -->
+        <aside class="sidebar">
+          <!-- Skill -->
+          <div class="section">
+            <div class="section-title">Keahlian</div>
+            <div class="skill-item">
+              <span class="skill-name">HTML & CSS</span>
+              <div class="skill-bar-bg"><div class="skill-bar-fill fill-90"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">JavaScript</span>
+              <div class="skill-bar-bg"><div class="skill-bar-fill fill-85"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">React & Vue</span>
+              <div class="skill-bar-bg"><div class="skill-bar-fill fill-80"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">UI/UX Design</span>
+              <div class="skill-bar-bg"><div class="skill-bar-fill fill-75"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Node.js</span>
+              <div class="skill-bar-bg"><div class="skill-bar-fill fill-70"></div></div>
+            </div>
+          </div>
+
+          <!-- Bahasa -->
+          <div class="section">
+            <div class="section-title">Bahasa</div>
+            <div class="lang-item">
+              <span>Indonesia</span>
+              <span class="lang-level">Native</span>
+            </div>
+            <div class="lang-item">
+              <span>Inggris</span>
+              <span class="lang-level">Profesional</span>
+            </div>
+            <div class="lang-item">
+              <span>Jepang</span>
+              <span class="lang-level">Dasar</span>
+            </div>
+          </div>
+
+          <!-- Pendidikan -->
+          <div class="section">
+            <div class="section-title">Pendidikan</div>
+            <div class="education-item">
+              <div class="edu-degree">S1 Teknik Informatika</div>
+              <div class="edu-school">Universitas Bina Nusantara</div>
+              <div class="edu-year">2015 – 2019</div>
+            </div>
+            <div class="education-item">
+              <div class="edu-degree">SMA IPA</div>
+              <div class="edu-school">SMA Negeri 8 Jakarta</div>
+              <div class="edu-year">2012 – 2015</div>
+            </div>
+          </div>
+
+          <!-- Sertifikasi -->
+          <div class="section">
+            <div class="section-title">Sertifikasi</div>
+            <div class="cert-item">
+              <strong>Google UX Design</strong>
+              — 2021
+            </div>
+            <div class="cert-item">
+              <strong>Meta Front-End</strong>
+              — 2022
+            </div>
+            <div class="cert-item">
+              <strong>Agile Scrum</strong>
+              — 2023
+            </div>
+          </div>
+
+          <!-- Tombol kontak flat -->
+          <a href="#" class="button-flat" style="display: inline-block">Unduh CV</a>
+        </aside>
+
+        <!-- Konten utama -->
+        <main class="main-content">
+          <!-- Profil -->
+          <div class="section">
+            <div class="section-title">Profil</div>
+            <p class="profile-text">
+              Pengembang web dengan 5+ tahun pengalaman membangun antarmuka yang bersih dan responsif. Terbiasa bekerja
+              dalam tim lintas fungsi, menerjemahkan kebutuhan bisnis menjadi solusi digital yang fungsional. Fokus pada
+              kualitas kode, aksesibilitas, dan pengalaman pengguna.
+            </p>
+          </div>
+
+          <!-- Pengalaman kerja -->
+          <div class="section">
+            <div class="section-title">Pengalaman Kerja</div>
+
+            <div class="experience-item">
+              <div class="exp-header">
+                <span class="exp-title">Front-End Developer</span>
+                <span class="exp-company">PT Digital Kreasi</span>
+                <span class="exp-date">2022 — Sekarang</span>
+              </div>
+              <ul class="exp-desc">
+                <li>Mengembangkan dan memelihara dashboard internal menggunakan React & TypeScript.</li>
+                <li>Berkolaborasi dengan desainer untuk implementasi design system yang konsisten.</li>
+                <li>Optimasi performa web, mengurangi waktu muat hingga 40%.</li>
+              </ul>
+            </div>
+
+            <div class="experience-item">
+              <div class="exp-header">
+                <span class="exp-title">Web Developer</span>
+                <span class="exp-company">Studio Kreatif Mandiri</span>
+                <span class="exp-date">2019 — 2022</span>
+              </div>
+              <ul class="exp-desc">
+                <li>Membangun 20+ website company profile dan e-commerce untuk klien UMKM.</li>
+                <li>Menangani integrasi API, keranjang belanja, dan sistem pembayaran sederhana.</li>
+                <li>Melakukan maintenance dan troubleshooting berkala.</li>
+              </ul>
+            </div>
+
+            <div class="experience-item">
+              <div class="exp-header">
+                <span class="exp-title">Junior Web Developer</span>
+                <span class="exp-company">CV Media Cipta</span>
+                <span class="exp-date">2018 — 2019</span>
+              </div>
+              <ul class="exp-desc">
+                <li>Membantu pengembangan front-end menggunakan HTML, CSS, dan jQuery.</li>
+                <li>Memastikan tampilan responsif di berbagai perangkat.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Proyek / pencapaian -->
+          <div class="section">
+            <div class="section-title">Proyek Pilihan</div>
+            <div class="experience-item">
+              <div class="exp-header">
+                <span class="exp-title">Sistem Informasi Desa</span>
+                <span class="exp-company">Proyek Pribadi</span>
+                <span class="exp-date">2023</span>
+              </div>
+              <ul class="exp-desc">
+                <li>Aplikasi web untuk administrasi data penduduk dan surat menyurat.</li>
+                <li>Menggunakan Laravel + Tailwind, di-deploy di VPS pribadi.</li>
+              </ul>
+            </div>
+            <div class="experience-item">
+              <div class="exp-header">
+                <span class="exp-title">Portofolio Interaktif</span>
+                <span class="exp-company">Desain & Kode</span>
+                <span class="exp-date">2022</span>
+              </div>
+              <ul class="exp-desc">
+                <li>Website portofolio dengan animasi ringan dan performa tinggi.</li>
+                <li>Mendapat apresiasi dari komunitas desain lokal.</li>
+              </ul>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <!-- Footer flat -->
+      <footer class="cv-footer">Andi Pratama — CV Online · Dibuat dengan pendekatan sederhana & profesional</footer>
+    </div>
+  </body>
+</html>
